@@ -1,7 +1,6 @@
 import React from 'react'
 import CustomInput from '../components/CustomInput'
 import { Link } from 'react-router-dom'
-
 const login = () => {
   return (
     <div className='py-5' style={{background:"#ffd333", minHeight:"100vh"}}>
