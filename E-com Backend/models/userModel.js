@@ -5,14 +5,17 @@ const crypto = require("crypto");
 var userSchema = new mongoose.Schema(
   {
     firstname: {
+      index: true,
       type: String,
       required: true,
     },
     lastname: {
+      index: true,
       type: String,
       required: true,
     },
     email: {
+      index: true,
       type: String,
       required: true,
       unique: true,
@@ -29,6 +32,7 @@ var userSchema = new mongoose.Schema(
     role: {
       type: String,
       default: "user",
+      enum:['admin','user']
     },
     isBlocked: {
       type: Boolean,
