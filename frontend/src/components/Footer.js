@@ -34,7 +34,7 @@ const Footer = () => {
           <div className="col-4">
             <h4 className='mb-4 text-white'>Contact Us</h4>
             <div className='footer-link d-flex flex-column'>
-              <address className='text-white fs-6'>143 BD Al Massira Maarif, <br /> Casablanca, Maroc <br /> Code Postal: 20120 </address>
+              <address className='text-white fs-6'>143 BD Al Massira Maarif, <br /> Casablanca, Maroc <br /> Code Postal: 20250 </address>
               <a href="tel:+212522121314" className='mt-3 d-block mb-1 text-white'>
                 +212 522121314
               </a>
