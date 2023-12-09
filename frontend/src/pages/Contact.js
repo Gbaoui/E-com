@@ -5,6 +5,7 @@ import { AiOutlineHome } from "react-icons/ai";
 import { IoCallOutline } from "react-icons/io5";
 import { MdMailOutline } from "react-icons/md";
 import { LiaInfoSolid } from "react-icons/lia";
+import Container from '../components/Container';
 
 
 const Contact = () => {
@@ -12,8 +13,7 @@ const Contact = () => {
     <>
       <Meta title={"Contact"} />  
       <BreadCrumb title='Contact Us'/>
-      <div className="contact-wrapper py-5 home-wrapper-2">
-        <div className="container-xxl">
+      <Container class1="contact-wrapper py-5 home-wrapper-2">
           <div className="row">
             <div className="col-12">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19150.221105077468!2d-7.65565647606672!3d33.58810534813928!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7d2e8c7b72cfd%3A0xa96156b67723241!2s143%20Bd%20Al%20Massira%20Al%20Khadra!5e0!3m2!1sfr!2sma!4v1701446417110!5m2!1sfr!2sma" 
@@ -69,10 +69,9 @@ const Contact = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+      </Container>
     </>
   )
 }
 
-export default Contact
+export default Contact;
