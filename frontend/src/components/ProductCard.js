@@ -8,7 +8,6 @@ import watch from "../images/watch.jpg";
 import watch2 from "../images/watch-1.avif";
 import addcart from "../images/add-cart.svg";
 import view from "../images/view.svg";
-// import { getProducts } from "../features/products/productSlice";
 
 
 const ProductCard = (props) => {
@@ -19,7 +18,14 @@ const ProductCard = (props) => {
     <>
     <div 
     className={` ${location.pathname == "/product" ? `gr-${grid}` : "col-3"}`}>
-      <Link to=":id" className="product-card position-relative">
+      <Link to={`${
+        location.pathname == "/" 
+        ? "/product/:id" 
+        : location.pathname == "/product/:id" 
+        ? "/product/:id" 
+        : ":id" 
+      }`} 
+      className="product-card position-relative">
         <div className="wishlist-icon position-absolute">
             <button className='border-0 bg-transparent'>
               <img src={wish} alt="wishlist" />
@@ -63,7 +69,14 @@ const ProductCard = (props) => {
     </div>
     <div 
     className={` ${location.pathname == "/product" ? `gr-${grid}` : "col-3"}`}>
-      <Link className="product-card position-relative">
+      <Link to={`${
+        location.pathname == "/" 
+        ? "/product/:id" 
+        : location.pathname == "/product/:id" 
+        ? "/product/:id" 
+        : ":id" 
+      }`}  
+      className="product-card position-relative">
         <div className="wishlist-icon position-absolute">
             <Link>
               <img src={wish} alt="wishlist" />
