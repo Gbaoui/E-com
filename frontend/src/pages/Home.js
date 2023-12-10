@@ -8,7 +8,7 @@ import SpecialProduct from '../components/SpecialProduct';
 const Home = () => {
   return (
     <>
-    <section className="home-wrapper-1 py-5">
+    <div className="home-wrapper-1 py-5">
       <div className="container-xxl">
         <div className="row">
           <div className="col-6">
@@ -61,7 +61,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
     <section className="home-wrapper-2 py-5">
       <div className="container-xxl">
         <div className="row">
@@ -233,7 +233,7 @@ for 24 mo. Footnote*</p>
         </div>
       </div>
     </section>
-    <section className="special-wrapper py-5 home-wrapper-2">
+    <div className="special-wrapper py-5 home-wrapper-2">
       <div className="container-xxl">
         <div className="row">
           <div className="col-12">
@@ -247,8 +247,8 @@ for 24 mo. Footnote*</p>
           <SpecialProduct />
         </div>
       </div>
-    </section>
-    <section className="popular-wrapper py-5 home-wrapper-2">
+    </div>
+    <div className="popular-wrapper py-5 home-wrapper-2">
       <div className="container-xxl">
         <div className="row">
           <div className="col-12">
@@ -262,7 +262,7 @@ for 24 mo. Footnote*</p>
           <ProductCard />
         </div>
       </div>
-    </section>
+    </div>
     <section className="marquee-wrapper py-5">
       <div className="container-xxl">
         <div className="row">
