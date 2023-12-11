@@ -10,8 +10,14 @@ import services from '../utils/Data';
 const Home = () => {
   return (
     <>
+<<<<<<< HEAD
     <Container class1="home-wrapper-1 py-5">
     <div className="row">
+=======
+    <div className="home-wrapper-1 py-5">
+      <div className="container-xxl">
+        <div className="row">
+>>>>>>> 22358672d85a16916d2c30df26ed0d4e69a51946
           <div className="col-6">
             <div className="main-banner position-relative ">
               <img src="/images/main-banner-1.jpg" className='img-fluid rounded-3' alt="main banner" />
@@ -61,9 +67,17 @@ const Home = () => {
             </div>
           </div>
         </div>
+<<<<<<< HEAD
     </Container>
     <Container class1='home-wrapper-2 py-5'>
     <div className="row">
+=======
+      </div>
+    </div>
+    <section className="home-wrapper-2 py-5">
+      <div className="container-xxl">
+        <div className="row">
+>>>>>>> 22358672d85a16916d2c30df26ed0d4e69a51946
           <div className="col-12">
             <div className="services d-flex align-items-center justify-content-between">
             {services?.map((i, j) => {
@@ -200,8 +214,15 @@ const Home = () => {
             </div>
           </div>
         </div>
+<<<<<<< HEAD
     </Container>
     <Container class1="special-wrapper py-5 home-wrapper-2">
+=======
+      </div>
+    </section>
+    <div className="special-wrapper py-5 home-wrapper-2">
+      <div className="container-xxl">
+>>>>>>> 22358672d85a16916d2c30df26ed0d4e69a51946
         <div className="row">
           <div className="col-12">
             <h3 className="section-heading">Special Products</h3>
@@ -213,8 +234,15 @@ const Home = () => {
           <SpecialProduct />
           <SpecialProduct />
         </div>
+<<<<<<< HEAD
     </Container>
     <Container class1="popular-wrapper py-5 home-wrapper-2">
+=======
+      </div>
+    </div>
+    <div className="popular-wrapper py-5 home-wrapper-2">
+      <div className="container-xxl">
+>>>>>>> 22358672d85a16916d2c30df26ed0d4e69a51946
         <div className="row">
           <div className="col-12">
             <h3 className="section-heading">Our Popular Products</h3>
@@ -226,8 +254,15 @@ const Home = () => {
           <ProductCard />
           <ProductCard />
         </div>
+<<<<<<< HEAD
     </Container>
     <Container class1="marquee-wrapper py-5">
+=======
+      </div>
+    </div>
+    <section className="marquee-wrapper py-5">
+      <div className="container-xxl">
+>>>>>>> 22358672d85a16916d2c30df26ed0d4e69a51946
         <div className="row">
           <div className="col-12">
             <div className="marquee-inner-wrapper card-wrapper">

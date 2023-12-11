@@ -4,43 +4,27 @@ const Cart = require("../models/cartModel");
 const Coupon = require("../models/couponModel");
 const Order = require("../models/orderModel");
 const uniqid = require("uniqid");
-
-
 const asyncHandler = require("express-async-handler");
 const { generateToken } = require("../config/jwtToken");
 const validateMongoDbId = require("../utils/validateMongodbId");
-const { generateRefreshToken } = require("../config/refreshtoken");
+const { generateRefreshToken } = require("../config/refreshtoken.js");
 const crypto = require("crypto");
+
 const jwt = require("jsonwebtoken");
-// const sendEmail = require("./emailCtrl");
 
-// Create a User ----------------------------------------------
-
+//Create a User
 const createUser = asyncHandler(async (req, res) => {
-  /**
-   * TODO:Get the email from req.body
-   */
   const email = req.body.email;
-  /**
-   * TODO:With the help of email find the user exists or not
-   */
   const findUser = await User.findOne({ email: email });
-
   if (!findUser) {
-    /**
-     * TODO:if user not found user create a new user
-     */
     const newUser = await User.create(req.body);
     res.json(newUser);
   } else {
-    /**
-     * TODO:if user found then thow an error: User already exists
-     */
-    throw new Error("User Already Exists");
+    throw new Error("User already exists");
   }
 });
 
-// Login a user
+//Login user
 const loginUserCtrl = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   // check if user exists or not
@@ -71,7 +55,7 @@ const loginUserCtrl = asyncHandler(async (req, res) => {
   }
 });
 
-// admin login
+//Login Admin
 
 const loginAdmin = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -105,7 +89,6 @@ const loginAdmin = asyncHandler(async (req, res) => {
 });
 
 // handle refresh token
-
 const handleRefreshToken = asyncHandler(async (req, res) => {
   const cookie = req.cookies;
   if (!cookie?.refreshToken) throw new Error("No Refresh Token in Cookies");
@@ -122,7 +105,6 @@ const handleRefreshToken = asyncHandler(async (req, res) => {
 });
 
 // logout functionality
-
 const logout = asyncHandler(async (req, res) => {
   const cookie = req.cookies;
   if (!cookie?.refreshToken) throw new Error("No Refresh Token in Cookies");
@@ -145,12 +127,10 @@ const logout = asyncHandler(async (req, res) => {
   res.sendStatus(204); // forbidden
 });
 
-// Update a user
-
+//Update a user
 const updatedUser = asyncHandler(async (req, res) => {
   const { _id } = req.user;
   validateMongoDbId(_id);
-
   try {
     const updatedUser = await User.findByIdAndUpdate(
       _id,
@@ -170,8 +150,7 @@ const updatedUser = asyncHandler(async (req, res) => {
   }
 });
 
-// save user Address
-
+//Save User Address
 const saveAddress = asyncHandler(async (req, res, next) => {
   const { _id } = req.user;
   validateMongoDbId(_id);
@@ -193,7 +172,6 @@ const saveAddress = asyncHandler(async (req, res, next) => {
 });
 
 // Get all users
-
 const getallUser = asyncHandler(async (req, res) => {
   try {
     const getUsers = await User.find().populate("wishlist");
@@ -204,11 +182,9 @@ const getallUser = asyncHandler(async (req, res) => {
 });
 
 // Get a single user
-
 const getaUser = asyncHandler(async (req, res) => {
   const { id } = req.params;
   validateMongoDbId(id);
-
   try {
     const getaUser = await User.findById(id);
     res.json({
@@ -219,26 +195,10 @@ const getaUser = asyncHandler(async (req, res) => {
   }
 });
 
-// Get a single user
-
-const deleteaUser = asyncHandler(async (req, res) => {
-  const { id } = req.params;
-  validateMongoDbId(id);
-
-  try {
-    const deleteaUser = await User.findByIdAndDelete(id);
-    res.json({
-      deleteaUser,
-    });
-  } catch (error) {
-    throw new Error(error);
-  }
-});
-
+//Block a User
 const blockUser = asyncHandler(async (req, res) => {
   const { id } = req.params;
   validateMongoDbId(id);
-
   try {
     const blockusr = await User.findByIdAndUpdate(
       id,
@@ -255,10 +215,10 @@ const blockUser = asyncHandler(async (req, res) => {
   }
 });
 
+//Unblock a User
 const unblockUser = asyncHandler(async (req, res) => {
   const { id } = req.params;
   validateMongoDbId(id);
-
   try {
     const unblock = await User.findByIdAndUpdate(
       id,
@@ -270,13 +230,38 @@ const unblockUser = asyncHandler(async (req, res) => {
       }
     );
     res.json({
-      message: "User UnBlocked",
+      message: "User Unblocked",
+    });
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+// Delete a single user
+const deleteaUser = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  validateMongoDbId(id);
+  try {
+    const deleteaUser = await User.findByIdAndDelete(id);
+    res.json({
+      deleteaUser,
     });
   } catch (error) {
     throw new Error(error);
   }
 });
 
+//Add to Wishlist
+const getWishlist = asyncHandler(async (req, res) => {
+  const { _id } = req.user;
+  try {
+    const findUser = await User.findById(_id).populate("wishlist");
+    res.json(findUser);
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
+//Update Password
 const updatePassword = asyncHandler(async (req, res) => {
   const { _id } = req.user;
   const { password } = req.body;
@@ -291,6 +276,7 @@ const updatePassword = asyncHandler(async (req, res) => {
   }
 });
 
+//Forgot Password
 const forgotPasswordToken = asyncHandler(async (req, res) => {
   const { email } = req.body;
   const user = await User.findOne({ email });
@@ -312,6 +298,7 @@ const forgotPasswordToken = asyncHandler(async (req, res) => {
   }
 });
 
+//Reset Password
 const resetPassword = asyncHandler(async (req, res) => {
   const { password } = req.body;
   const { token } = req.params;
@@ -328,16 +315,7 @@ const resetPassword = asyncHandler(async (req, res) => {
   res.json(user);
 });
 
-const getWishlist = asyncHandler(async (req, res) => {
-  const { _id } = req.user;
-  try {
-    const findUser = await User.findById(_id).populate("wishlist");
-    res.json(findUser);
-  } catch (error) {
-    throw new Error(error);
-  }
-});
-
+//User Cart
 const userCart = asyncHandler(async (req, res) => {
   const { cart } = req.body;
   const { _id } = req.user;
@@ -374,6 +352,7 @@ const userCart = asyncHandler(async (req, res) => {
   }
 });
 
+//Get User Cart
 const getUserCart = asyncHandler(async (req, res) => {
   const { _id } = req.user;
   validateMongoDbId(_id);
@@ -387,6 +366,7 @@ const getUserCart = asyncHandler(async (req, res) => {
   }
 });
 
+//Clear Cart
 const emptyCart = asyncHandler(async (req, res) => {
   const { _id } = req.user;
   validateMongoDbId(_id);
@@ -399,6 +379,7 @@ const emptyCart = asyncHandler(async (req, res) => {
   }
 });
 
+//Apply Coupon
 const applyCoupon = asyncHandler(async (req, res) => {
   const { coupon } = req.body;
   const { _id } = req.user;
@@ -423,6 +404,7 @@ const applyCoupon = asyncHandler(async (req, res) => {
   res.json(totalAfterDiscount);
 });
 
+//Create Order
 const createOrder = asyncHandler(async (req, res) => {
   const { COD, couponApplied } = req.body;
   const { _id } = req.user;
@@ -466,6 +448,7 @@ const createOrder = asyncHandler(async (req, res) => {
   }
 });
 
+//Get User Orders
 const getOrders = asyncHandler(async (req, res) => {
   const { _id } = req.user;
   validateMongoDbId(_id);
@@ -480,6 +463,7 @@ const getOrders = asyncHandler(async (req, res) => {
   }
 });
 
+//Get All Orders
 const getAllOrders = asyncHandler(async (req, res) => {
   try {
     const alluserorders = await Order.find()
@@ -491,6 +475,8 @@ const getAllOrders = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
+
+//Get Order By Id
 const getOrderByUserId = asyncHandler(async (req, res) => {
   const { id } = req.params;
   validateMongoDbId(id);
@@ -504,6 +490,8 @@ const getOrderByUserId = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
+
+//Update Order Status
 const updateOrderStatus = asyncHandler(async (req, res) => {
   const { status } = req.body;
   const { id } = req.params;
@@ -524,7 +512,6 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
-
 module.exports = {
   createUser,
   loginUserCtrl,
@@ -534,21 +521,21 @@ module.exports = {
   updatedUser,
   blockUser,
   unblockUser,
+  loginAdmin,
+  saveAddress,
   handleRefreshToken,
   logout,
   updatePassword,
-  forgotPasswordToken,
   resetPassword,
-  loginAdmin,
   getWishlist,
-  saveAddress,
+  forgotPasswordToken,
   userCart,
   getUserCart,
   emptyCart,
   applyCoupon,
   createOrder,
   getOrders,
-  updateOrderStatus,
   getAllOrders,
   getOrderByUserId,
+  updateOrderStatus,
 };
