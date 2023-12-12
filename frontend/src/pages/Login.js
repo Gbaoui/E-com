@@ -6,6 +6,8 @@ import Container from '../components/Container';
 import CustomInput from '../components/CustomInput';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../features/users/userSlice';
 
 const loginSchema = yup.object({
   email: yup.string().email("Email Should be valid")
@@ -14,6 +16,7 @@ const loginSchema = yup.object({
 });
 
 const Login = () => {
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -21,7 +24,7 @@ const Login = () => {
     },
     validationSchema : loginSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values));
+      dispatch(loginUser(values));
     },
   });
   return (
@@ -38,8 +41,8 @@ const Login = () => {
                         type="email" 
                         name='email' 
                         placeholder='Email'
-                        onChange={() => formik.handleChange("email")}
-                        onBlur={() => formik.handleBlur("email")}
+                        onChange={formik.handleChange("email")}
+                        onBlur={formik.handleBlur("email")}
                         value={formik.values.email}
                         />
                         <div className="error">
@@ -49,8 +52,8 @@ const Login = () => {
                         type="password" 
                         name='password' 
                         placeholder='Password'
-                        onChange={() => formik.handleChange("password")}
-                        onBlur={() => formik.handleBlur("password")}
+                        onChange={formik.handleChange("password")}
+                        onBlur={formik.handleBlur("password")}
                         value={formik.values.password}
                         />
                         <div className="error">
