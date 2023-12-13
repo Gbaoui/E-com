@@ -92,16 +92,6 @@ const MainLayout = () => {
                 icon: <BiCategoryAlt  className='fs-4'/>,
                 label: 'Category List',
               },
-                {
-                key: 'color',
-                icon: <IoIosColorPalette  className='fs-4'/>,
-                label: 'color',
-              },
-                {
-                key: 'list-color',
-                icon: <IoIosColorPalette className='fs-4'/>,
-                label: 'Color List',
-              }
             ]
             },
             {
@@ -109,32 +99,7 @@ const MainLayout = () => {
                 icon: <TbShoppingCartSearch className='fs-4' />,
                 label: 'Orders',
               },
-            {
-                key: 'blog',
-                icon: <FaBlogger className='fs-4' />,
-                label: 'Blogs',
-                children:[
-                    {
-                    key: 'add-blog',
-                    icon: <FaEdit className='fs-4' />,
-                    label: 'Add Blog',
-                },
-                    {
-                    key: 'blog-list',
-                    icon: <FaBlogger className='fs-4' />,
-                    label: 'Blog List',
-                },
-                {
-                    key: 'add-blog-category',
-                    icon: <FaEdit className='fs-4' />,
-                    label: 'Add Blog Category',
-                },
-                {
-                    key: 'blog-category-list',
-                    icon: <FaBlogger className='fs-4' />,
-                    label: 'Blog-Category List',
-                },
-            ]},
+           
             {
                 key: 'enquiries',
                 icon: <TbShoppingCartSearch className='fs-4' />,
