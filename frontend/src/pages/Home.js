@@ -6,6 +6,7 @@ import ProductCard from "../components/ProductCard";
 import SpecialProduct from "../components/SpecialProduct";
 import Container from "../components/Container";
 import  services from "../utils/Data";
+import services  from "../utils/Data";
 
 const Home = () => {
   return (
@@ -189,7 +190,11 @@ const Home = () => {
           <div className="col-3">
             <div className="famous-card position-relative">
               <img
+<<<<<<< HEAD
                 src="images/famous-1.webp"
+=======
+                src="https://demo-digitic.myshopify.com/cdn/shop/files/subbanner-01.jpg?v=1655701528"
+>>>>>>> e850eb6d950513afc4a5733dd4a8dc1b0506222a
                 className="img-fluid"
                 alt="famous"
               />
@@ -203,7 +208,11 @@ const Home = () => {
           <div className="col-3">
             <div className="famous-card position-relative">
               <img
+<<<<<<< HEAD
                 src="images/famous-2.webp"
+=======
+                src="https://demo-digitic.myshopify.com/cdn/shop/files/subbanner-02.jpg?v=1654920168"
+>>>>>>> e850eb6d950513afc4a5733dd4a8dc1b0506222a
                 className="img-fluid"
                 alt="famous"
               />
@@ -217,7 +226,11 @@ const Home = () => {
           <div className="col-3">
             <div className="famous-card position-relative">
               <img
+<<<<<<< HEAD
                 src="images/famous-3.webp"
+=======
+                src="https://demo-digitic.myshopify.com/cdn/shop/files/subbanner-03.jpg?v=1654920181"
+>>>>>>> e850eb6d950513afc4a5733dd4a8dc1b0506222a
                 className="img-fluid"
                 alt="famous"
               />
@@ -233,7 +246,11 @@ const Home = () => {
           <div className="col-3">
             <div className="famous-card position-relative">
               <img
+<<<<<<< HEAD
                 src="images/famous-3.webp"
+=======
+                src="https://demo-digitic.myshopify.com/cdn/shop/files/subbanner-04.jpg?v=1654920192"
+>>>>>>> e850eb6d950513afc4a5733dd4a8dc1b0506222a
                 className="img-fluid"
                 alt="famous"
               />
@@ -335,4 +352,8 @@ const Home = () => {
   );
 };
 
+<<<<<<< HEAD
 export default Home;
+=======
+export default Home;
+>>>>>>> e850eb6d950513afc4a5733dd4a8dc1b0506222a

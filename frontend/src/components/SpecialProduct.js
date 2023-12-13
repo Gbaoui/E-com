@@ -55,4 +55,4 @@ const SpecialProduct = () => {
   )
 }
 
-export default SpecialProduct
+export default SpecialProduct;

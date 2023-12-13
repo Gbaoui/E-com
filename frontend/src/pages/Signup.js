@@ -1,21 +1,24 @@
 import React from 'react';
 import Meta from '../components/Meta';
 import BreadCrumb from '../components/BreadCrumb';
-import { Link } from 'react-router-dom';
 import Container from '../components/Container';
 import CustomInput from '../components/CustomInput';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../features/users/userSlice';
+import { ToastContainer } from 'react-toastify';
 
 const signUpSchema = yup.object({
   firstname: yup.string().required("First Name is Required"),
-  lastname: yup.string().required("Last Name is Required"),
+  lastname: yup.string()
+  .required("Last Name is Required"),
   email: yup.string().email("Email Should be valid")
   .required("Email Address is Required"),
-  mobile: yup.string().required("Mobile Number is Required"),
-  password: yup.string().required("Password is Required"),
+  mobile: yup.string()
+  .required("Mobile Number is Required"),
+  password: yup.string()
+  .required("Password is Required"),
 });
 
 const Signup = () => {
@@ -98,6 +101,7 @@ const Signup = () => {
                         <div className="error">
                           {formik.touched.password && formik.errors.password}
                         </div>
+                        <ToastContainer />
                         <div>
                             <div className='d-flex justify-content-center gap-15 align-items-center mt-4'>
                                 <button className='button border-0'>Sign Up</button>

@@ -20,6 +20,7 @@ import Addcolor from './pages/Addcolor';
 import Addcat from './pages/Addcat';
 import Addbrand from './pages/Addbrand';
 import Addprod from './pages/Addprod';
+import ViewOrder from './pages/ViewOrder';
 
 
 
@@ -53,6 +54,7 @@ function App() {
           <Route path='brand' element={<Addbrand/>}/>
           <Route path="brand/:id" element={<Addbrand />} />
           <Route path='Product' element={<Addprod/>}/>
+          <Route path="order/:id" element={<ViewOrder />} />
         </Route>
       </Routes>
     </Router>
