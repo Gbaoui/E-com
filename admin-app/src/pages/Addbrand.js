@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import { React, useEffect } from "react";
 import CustomInput from "../components/CustomInput";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { ToastContainer } from 'react-toastify';
+import "react-quill/dist/quill.snow.css";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import {
@@ -15,7 +17,6 @@ import {
 let schema = yup.object().shape({
   title: yup.string().required("Brand Name is Required"),
 });
-
 const Addbrand = () => {
   const dispatch = useDispatch();
   const location = useLocation();
@@ -30,29 +31,27 @@ const Addbrand = () => {
     brandName,
     updatedBrand,
   } = newBrand;
-
   useEffect(() => {
     if (getBrandId !== undefined) {
       dispatch(getABrand(getBrandId));
     } else {
       dispatch(resetState());
     }
-  }, [getBrandId, dispatch]);
+  }, [getBrandId]);
 
   useEffect(() => {
     if (isSuccess && createdBrand) {
       toast.success("Brand Added Successfully!");
-      navigate("/admin/brand-list");
     }
     if (isSuccess && updatedBrand) {
       toast.success("Brand Updated Successfully!");
       navigate("/admin/brand-list");
     }
+
     if (isError) {
       toast.error("Something Went Wrong!");
     }
-  }, [isSuccess, isError, isLoading, createdBrand, updatedBrand, navigate]);
-
+  }, [isSuccess, isError, isLoading]);
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
@@ -63,13 +62,20 @@ const Addbrand = () => {
       if (getBrandId !== undefined) {
         const data = { id: getBrandId, brandData: values };
         dispatch(updateABrand(data));
+        dispatch(resetState());
       } else {
         dispatch(createBrand(values));
+        formik.resetForm();
+        setTimeout(() => {
+          dispatch(resetState());
+        }, 3000);
       }
     },
   });
 
   return (
+    <>
+    
     <div>
       <h3 className="mb-4 title">
         {getBrandId !== undefined ? "Edit" : "Add"} Brand
@@ -79,9 +85,9 @@ const Addbrand = () => {
           <CustomInput
             type="text"
             name="title"
-            onChng={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.title}
+            onChng={formik.handleChange("title")}
+            onBlr={formik.handleBlur("title")}
+            val={formik.values.title}
             label="Enter Brand"
             id="brand"
           />
@@ -95,8 +101,10 @@ const Addbrand = () => {
             {getBrandId !== undefined ? "Edit" : "Add"} Brand
           </button>
         </form>
+    <ToastContainer/>
       </div>
     </div>
+    </>
   );
 };
 

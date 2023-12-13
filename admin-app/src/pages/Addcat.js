@@ -3,6 +3,8 @@ import CustomInput from "../components/CustomInput";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import {ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import * as yup from "yup";
 import { useFormik } from "formik";
 import {
@@ -37,10 +39,10 @@ const Addcat = () => {
   }, [getPCatId]);
   useEffect(() => {
     if (isSuccess && createdCategory) {
-      toast.success("Category Added Successfullly!");
+      toast.success("Category Added Successfully!");
     }
     if (isSuccess && updatedCategory) {
-      toast.success("Category Updated Successfullly!");
+      toast.success("Category Updated Successfully!");
       navigate("/admin/list-category");
     }
     if (isError) {
@@ -85,6 +87,7 @@ const Addcat = () => {
           <div className="error">
             {formik.touched.title && formik.errors.title}
           </div>
+          <ToastContainer/>
           <button
             className="btn btn-success border-0 rounded-3 my-5"
             type="submit"

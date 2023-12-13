@@ -25,6 +25,7 @@ import Addprod from './pages/Addprod';
 
 
 
+
 function App() {
   return (
     <Router>
@@ -46,8 +47,11 @@ function App() {
           <Route path='add-blog' element={<Addblog/>}/>
           <Route path='add-blog-category' element={<Addblogcat/>}/>
           <Route path='color' element={<Addcolor/>}/>
+          <Route path='color/:id' element={<Addcolor/>}/>
           <Route path='category' element={<Addcat/>}/>
+          <Route path='category/:id' element={<Addcat/>}/>
           <Route path='brand' element={<Addbrand/>}/>
+          <Route path="brand/:id" element={<Addbrand />} />
           <Route path='Product' element={<Addprod/>}/>
         </Route>
       </Routes>

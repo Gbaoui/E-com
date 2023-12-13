@@ -3,7 +3,8 @@ import CustomInput from "../components/CustomInput";
 import ReactQuill from "react-quill";
 import { useNavigate } from "react-router-dom";
 import "react-quill/dist/quill.snow.css";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
@@ -253,6 +254,7 @@ const Addprod = () => {
               );
             })}
           </div>
+          <ToastContainer/>
           <button
             className="btn btn-success border-0 rounded-3 my-5"
             type="submit"
