@@ -117,7 +117,7 @@ const Home = () => {
                   <h6>Music & Gaming</h6>
                   <p>10 Items</p>
                 </div>
-                <img src="images/camera.jpg" alt="camera" />
+                <img src="https://demo-digitic.myshopify.com/cdn/shop/files/06_110x110.jpg?v=1654930029" alt="camera" />
               </div>
               <div className="d-flex gap align-items-center">
                 <div>
@@ -138,7 +138,7 @@ const Home = () => {
                   <h6>Smart Watches</h6>
                   <p>10 Items</p>
                 </div>
-                <img src="images/headphone.jpg" alt="camera" />
+                <img src="https://demo-digitic.myshopify.com/cdn/shop/products/09_110x110.jpg?v=1655095977" alt="camera" />
               </div>
             </div>
           </div>
@@ -159,7 +159,7 @@ const Home = () => {
           <div className="col-3">
             <div className="famous-card position-relative">
               <img
-                src="images/famous-1.webp"
+                src="https://demo-digitic.myshopify.com/cdn/shop/files/subbanner-01.jpg?v=1655701528"
                 className="img-fluid"
                 alt="famous"
               />
@@ -173,7 +173,7 @@ const Home = () => {
           <div className="col-3">
             <div className="famous-card position-relative">
               <img
-                src="images/famous-2.webp"
+                src="https://demo-digitic.myshopify.com/cdn/shop/files/subbanner-02.jpg?v=1654920168"
                 className="img-fluid"
                 alt="famous"
               />
@@ -187,7 +187,7 @@ const Home = () => {
           <div className="col-3">
             <div className="famous-card position-relative">
               <img
-                src="images/famous-3.webp"
+                src="https://demo-digitic.myshopify.com/cdn/shop/files/subbanner-03.jpg?v=1654920181"
                 className="img-fluid"
                 alt="famous"
               />
@@ -203,7 +203,7 @@ const Home = () => {
           <div className="col-3">
             <div className="famous-card position-relative">
               <img
-                src="images/famous-3.webp"
+                src="https://demo-digitic.myshopify.com/cdn/shop/files/subbanner-04.jpg?v=1654920192"
                 className="img-fluid"
                 alt="famous"
               />

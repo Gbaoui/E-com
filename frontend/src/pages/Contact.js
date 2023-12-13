@@ -11,7 +11,7 @@ import Container from '../components/Container';
 const Contact = () => {
   return (
     <>
-      <Meta title={"Contact"} />  
+      {/* <Meta title={"Contact"} />   */}
       <BreadCrumb title='Contact Us'/>
       <Container class1="contact-wrapper py-5 home-wrapper-2">
           <div className="row">

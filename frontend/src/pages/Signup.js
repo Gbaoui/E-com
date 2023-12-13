@@ -10,7 +10,8 @@ import { registerUser } from '../features/users/userSlice';
 import { ToastContainer } from 'react-toastify';
 
 const signUpSchema = yup.object({
-  firstname: yup.string().required("First Name is Required"),
+  firstname: yup.string()
+  .required("First Name is Required"),
   lastname: yup.string()
   .required("Last Name is Required"),
   email: yup.string().email("Email Should be valid")

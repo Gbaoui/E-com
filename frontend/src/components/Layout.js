@@ -4,6 +4,11 @@ import Header from './Header';
 import Footer from './Footer';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import { toast } from 'react-toastify';
+
+const showToast = () => {
+  toast.info('Test toast message');
+};
 
 const Layout = () => {
   return (
@@ -22,6 +27,7 @@ const Layout = () => {
     draggable
     pauseOnHover
     theme="light"/>
+     <button onClick={showToast}>Show Test Toast</button>
     </>
   )
 }
