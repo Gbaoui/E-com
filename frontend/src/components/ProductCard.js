@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import ReactStars from "react-rating-stars-component";
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import prodcompare from "../images/prodcompare.svg";
 import wish from "../images/wish.svg";
 import wishlist from "../images/wishlist.svg";
@@ -14,21 +14,23 @@ import { addToWishlist } from '../features/products/productSlice';
 
 const ProductCard = (props) => {
   const { grid, data } = props;
+  console.log(data);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   let location = useLocation();
-  const addToWish = (id) => {
-     dispatch(addToWishlist(id));
+  const addToWish = (_id) => {
+     dispatch(addToWishlist(_id));
   }
   
-  // const { products } = useSelector((state) => state.product);
+  const { products } = useSelector((state) => state.product);
   // useEffect(() => {
-  //   dispatch(getProducts());
+  //   dispatch(());
   // }, [dispatch]);
 
   return (
     <>
-    {
-      data?.map((item,index) => {
+    { 
+    data?.map((item,index) => {
         return (
           <div 
           key={index}
@@ -48,8 +50,8 @@ const ProductCard = (props) => {
             </button>
         </div>
         <div className="product-image">
-            <img src={item?.images[0].url} className='img-fluid d-block mx-auto' alt="product image" width={160}/>
-            <img src={watch2} className='img-fluid d-block mx-auto' alt="product image" width={160}/>
+            <img src={item?.images[0].url} className='img-fluid d-block mx-auto' width={300}/>
+            {/* <img src={watch2} className='img-fluid d-block mx-auto'  width={160}/> */}
         </div>
         <div className="product-details">
             <h6 className='brand'>{item?.brand}</h6>
@@ -59,7 +61,7 @@ const ProductCard = (props) => {
             <ReactStars 
              count={5}
              size={24}
-             value={item?.totalrating.toString()}
+             value={4}
              edit={false}
              activeColor={"#ffd700"}
             />
@@ -75,7 +77,7 @@ const ProductCard = (props) => {
                    <img src={prodcompare} alt="compare" />
                 </button>
                 <button className='border-0 bg-transparent'>
-                   <img src={view} alt="view" />
+                   <img onClick={()=> navigate("/product/"+item?._id)} src={view} alt="view" />
                 </button>
                 <button className='border-0 bg-transparent'>
                    <img src={addcart} alt="addcart" />
@@ -87,7 +89,7 @@ const ProductCard = (props) => {
         )
       })
     }
-    
+  
     </>
   )
 }

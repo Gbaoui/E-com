@@ -8,6 +8,7 @@ import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../features/users/userSlice';
 import { ToastContainer } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const signUpSchema = yup.object({
   firstname: yup.string()
@@ -23,6 +24,7 @@ const signUpSchema = yup.object({
 });
 
 const Signup = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -35,6 +37,7 @@ const Signup = () => {
     validationSchema : signUpSchema,
     onSubmit: (values) => {
       dispatch(registerUser(values));
+      navigate('/login');
     },
   });
   return (
@@ -105,7 +108,7 @@ const Signup = () => {
                         <ToastContainer />
                         <div>
                             <div className='d-flex justify-content-center gap-15 align-items-center mt-4'>
-                                <button className='button border-0'>Sign Up</button>
+                                <button className='button border-0' type='submit'>Sign Up</button>
                             </div>
                         </div>
                     </form>

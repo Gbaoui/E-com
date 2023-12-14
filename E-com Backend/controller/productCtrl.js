@@ -4,11 +4,13 @@ const asyncHandler = require("express-async-handler");
 const slugify = require("slugify");
 const validateMongoDbId = require("../utils/validateMongodbId");
 
+//Create Product
 const createProduct = asyncHandler(async (req, res) => {
   try {
     if (req.body.title) {
       req.body.slug = slugify(req.body.title);
     }
+
     const newProduct = await Product.create(req.body);
     res.json(newProduct);
   } catch (error) {
@@ -16,44 +18,52 @@ const createProduct = asyncHandler(async (req, res) => {
   }
 });
 
+//Update a product
 const updateProduct = asyncHandler(async (req, res) => {
-  const id = req.params;
+  const id = req.params.id;
   validateMongoDbId(id);
   try {
     if (req.body.title) {
       req.body.slug = slugify(req.body.title);
     }
-    const updateProduct = await Product.findOneAndUpdate({ id }, req.body, {
-      new: true,
-    });
-    res.json(updateProduct);
+    const updatedProduct = await Product.findOneAndUpdate(
+      { _id: id },
+      req.body,
+      {
+        new: true,
+      }
+    );
+    res.json(updatedProduct);
   } catch (error) {
     throw new Error(error);
   }
 });
 
+//Delete a product
 const deleteProduct = asyncHandler(async (req, res) => {
-  const id = req.params;
+  const id = req.params.id;
   validateMongoDbId(id);
   try {
-    const deleteProduct = await Product.findOneAndDelete(id);
-    res.json(deleteProduct);
+    const deletedProduct = await Product.findOneAndDelete({ _id: id });
+    res.json(deletedProduct);
   } catch (error) {
     throw new Error(error);
   }
 });
 
+//Get a Product
 const getaProduct = asyncHandler(async (req, res) => {
   const { id } = req.params;
   validateMongoDbId(id);
   try {
-    const findProduct = await Product.findById(id);
+    const findProduct = await Product.findById({ _id: id });
     res.json(findProduct);
   } catch (error) {
     throw new Error(error);
   }
 });
 
+//Get all Product
 const getAllProduct = asyncHandler(async (req, res) => {
   try {
     // Filtering
@@ -99,6 +109,8 @@ const getAllProduct = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
+
+//Add to Wishlist
 const addToWishlist = asyncHandler(async (req, res) => {
   const { _id } = req.user;
   const { prodId } = req.body;
@@ -133,6 +145,7 @@ const addToWishlist = asyncHandler(async (req, res) => {
   }
 });
 
+//Get Rating
 const rating = asyncHandler(async (req, res) => {
   const { _id } = req.user;
   const { star, prodId, comment } = req.body;

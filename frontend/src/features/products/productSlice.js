@@ -57,7 +57,8 @@ export const productSlice = createSlice({
             state.isLoading = false;
             state.isError = true;
             state.isSuccess = false;
-            state.message = action.error;
+            // state.message = action.error;
+            console.error('Error adding to wishlist:', action.error);
         })
     },
 });

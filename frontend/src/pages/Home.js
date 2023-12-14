@@ -1,13 +1,26 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Marquee from "react-fast-marquee";
 import BlogCard from "../components/BlogCard";
 import ProductCard from "../components/ProductCard";
 import SpecialProduct from "../components/SpecialProduct";
 import Container from "../components/Container";
 import services from "../utils/Data";
+import { getAllProducts } from '../features/products/productSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import ProductCard1 from "../components/ProductCard1";
+
 
 const Home = () => {
+  const productState = useSelector((state) => state?.product?.product);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  useEffect(() => {
+      getProducts();
+  }, []);
+  const getProducts = () => {
+     dispatch(getAllProducts());
+  }
   return (
     <>
       <Container class1="home-wrapper-1 py-5">
@@ -115,44 +128,74 @@ const Home = () => {
               <div className="d-flex gap align-items-center">
                 <div>
                   <h6>Music & Gaming</h6>
-                  <p>10 Items</p>
+                  <p>21 Items</p>
                 </div>
                 <img src="https://demo-digitic.myshopify.com/cdn/shop/files/06_110x110.jpg?v=1654930029" alt="camera" />
               </div>
               <div className="d-flex gap align-items-center">
                 <div>
                   <h6>Cameras</h6>
-                  <p>10 Items</p>
+                  <p>32 Items</p>
                 </div>
                 <img src="images/camera.jpg" alt="camera" />
               </div>
               <div className="d-flex gap align-items-center">
                 <div>
                   <h6>Smart Tv</h6>
-                  <p>10 Items</p>
+                  <p>15 Items</p>
                 </div>
                 <img src="images/tv.jpg" alt="camera" />
               </div>
               <div className="d-flex gap align-items-center">
                 <div>
                   <h6>Smart Watches</h6>
-                  <p>10 Items</p>
+                  <p>20 Items</p>
                 </div>
                 <img src="https://demo-digitic.myshopify.com/cdn/shop/products/09_110x110.jpg?v=1655095977" alt="camera" />
+              </div>
+              <div className="d-flex gap align-items-center">
+                <div>
+                  <h6>Portable Speakers</h6>
+                  <p>7 Items</p>
+                </div>
+                <img src="https://demo-digitic.myshopify.com/cdn/shop/products/03_110x110.jpg?v=1655095694" alt="camera" />
+              </div>
+              <div className="d-flex gap align-items-center">
+                <div>
+                  <h6>Accessories</h6>
+                  <p>10 Items</p>
+                </div>
+                <img src="https://demo-digitic.myshopify.com/cdn/shop/products/08_110x110.jpg?v=1655095351" alt="camera" />
+              </div>
+              <div className="d-flex gap align-items-center">
+                <div>
+                  <h6>Mobiles</h6>
+                  <p>8 Items</p>
+                </div>
+                <img src="https://demo-digitic.myshopify.com/cdn/shop/products/01_110x110.jpg?v=1655094851" alt="camera" />
+              </div>
+              <div className="d-flex gap align-items-center">
+                <div>
+                  <h6>Laptops</h6>
+                  <p>13 Items</p>
+                </div>
+                <img src="https://demo-digitic.myshopify.com/cdn/shop/files/02_110x110.jpg?v=1654929897" alt="camera" />
               </div>
             </div>
           </div>
         </div>
       </Container>
-      <Container class1="featured-wrapper py-5 home-wrapper-2">
+      {/* <Container class1="featured-wrapper py-5 home-wrapper-2">
         <div className="row">
           <div className="col-12">
             <h3 className="section-heading">Featured Collection</h3>
           </div>
-          <ProductCard />
-          <ProductCard />
+          <ProductCard1 />
+          <ProductCard1 />
+          <ProductCard1 />
+          <ProductCard1 />
         </div>
-      </Container>
+      </Container> */}
 
       <Container class1="famous-wrapper py-5 home-wrapper-2">
         <div className="row">
@@ -237,8 +280,7 @@ const Home = () => {
           </div>
         </div>
         <div className="row">
-          <ProductCard />
-          <ProductCard />
+          <ProductCard data={productState ? productState : []}/>
         </div>
       </Container>
       <Container class1="marque-wrapper home-wrapper-2 py-5">

@@ -1,7 +1,7 @@
 import React from 'react';
 import Meta from "../components/Meta";
 import BreadCrumb from "../components/BreadCrumb";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Container from '../components/Container';
 import CustomInput from '../components/CustomInput';
 import { useFormik } from 'formik';
@@ -16,6 +16,7 @@ const loginSchema = yup.object({
 });
 
 const Login = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -25,6 +26,7 @@ const Login = () => {
     validationSchema : loginSchema,
     onSubmit: (values) => {
       dispatch(loginUser(values));
+      navigate('/');
     },
   });
   return (

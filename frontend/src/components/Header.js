@@ -27,15 +27,15 @@ const Header = () => {
             </div>
             <div className="col-5">
               <div className="header-upper-links d-flex align-items-center justify-content-between">
-                <div>
+                {/* <div>
                   <Link to='/compare-product' className='d-flex align-items-center gap-10 text-white'>
                   <img src='/images/compare.svg' alt='compare' />
                   </Link>
-                </div>
+                </div> */}
                 <div>
-                <Link to='/wishlist' className='d-flex align-items-center gap-10 text-white'>
+                {/* <Link to='/wishlist' className='d-flex align-items-center gap-10 text-white'>
                 <img src='/images/wishlist.svg' alt='wishlist' />
-                  </Link>
+                  </Link> */}
                 </div>
                 <div>
                 <Link to='/login' className='d-flex align-items-center gap-10 text-white'>
@@ -73,9 +73,10 @@ const Header = () => {
                  <span className='me-5 d-inline-block'>Shop Categories</span>
                 </button>
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><Link className="dropdown-item text-white" to="">Action</Link></li>
-                <li><Link className="dropdown-item text-white" to="">Another action</Link></li>
-                <li><Link className="dropdown-item text-white" to="">Something else here</Link></li>
+                <li><Link className="dropdown-item text-white" to="/product">Watch</Link></li>
+                <li><Link className="dropdown-item text-white" to="/product">Tv</Link></li>
+                <li><Link className="dropdown-item text-white" to="/product">Camera</Link></li>
+                <li><Link className="dropdown-item text-white" to="/product">Laptop</Link></li>
                 </ul>
               </div>
                 </div>

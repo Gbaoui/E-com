@@ -30,9 +30,9 @@ const SpecialProduct = () => {
                         <b>5 days</b>
                     </p>
                     <div className="d-flex gap-10 align-items-center">
-                        <span className='badge rounded-circle p-3 bg-danger'>1</span>:
-                        <span className='badge rounded-circle p-3 bg-danger'>1</span>:
-                        <span className='badge rounded-circle p-3 bg-danger'>1</span>
+                        {/* <span className='badge rounded-circle p-3 bg-danger'>1</span>: */}
+                        {/* <span className='badge rounded-circle p-3 bg-danger'>1</span>: */}
+                        {/* <span className='badge rounded-circle p-3 bg-danger'>1</span> */}
                     </div>
                 </div>
                 <div className="prod-count my-3">
@@ -47,7 +47,7 @@ const SpecialProduct = () => {
                           </div>
                         </div>
                 </div>
-                <Link className='button'>Add to Cart</Link>
+                <Link className='button' to='/cart'>Add to Cart</Link>
             </div>
         </div>
       </div>

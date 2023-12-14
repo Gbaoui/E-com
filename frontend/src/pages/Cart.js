@@ -28,40 +28,9 @@ const Cart = () => {
                                 <img src={watch} className='img-fluid' alt="product image" />
                             </div>
                             <div className='w-75'>
-                                <p>fgfgh</p>
-                                <p>Size: dfr</p>
-                                <p>Color: azr</p>
-                            </div>
-                        </div>
-                        <div className='cart-col-2'>
-                            <h5 className="price">$ 100.00</h5>
-                        </div>
-                        <div className='cart-col-3 d-flex align-items-center gap-15'>
-                            <div>
-                                <input 
-                                className='form-control' 
-                                type="number"
-                                min={1}
-                                max={10} 
-                                name="" id="" />
-                            </div>
-                            <div>
-                              <MdDelete className='text-danger' />
-                            </div>
-                        </div>
-                        <div className='cart-col-4'>
-                          <h5 className="price">$ 100.00</h5>
-                        </div>
-                    </div>
-                    <div className=" cart-data py-3 mb-2 d-flex justify-content-between align-items-center">
-                        <div className='cart-col-1 gap-15 d-flex align-items-center'>
-                            <div className='w-25'>
-                                <img src={watch} className='img-fluid' alt="product image" />
-                            </div>
-                            <div className='w-75'>
-                                <p>fgfgh</p>
-                                <p>Size: dfr</p>
-                                <p>Color: azr</p>
+                                <p>Havels</p>
+                                {/* <p>Size: dfr</p> */}
+                                {/* <p>Color: azr</p> */}
                             </div>
                         </div>
                         <div className='cart-col-2'>
@@ -90,11 +59,11 @@ const Cart = () => {
                       <Link to='/product' className='button'>Continue To Shopping</Link>
                     </div>
                     <div className='d-flex flex-column align-items-end'>
-                        <h4>SubTotal: $ 1000.00</h4>
+                        <h4>SubTotal: $ 100.00</h4>
                         <p>Taxes and shipping calculated at checkout</p>
                         <Link to='/checkout' className='button'>Checkout</Link>
                     </div>
-                </div>
+                 </div>
             </div>
      </Container>
     </>

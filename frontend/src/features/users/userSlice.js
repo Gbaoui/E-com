@@ -54,7 +54,7 @@ export const authSlice = createSlice({
             state.isSuccess = false;
             state.message = action.error;
             if (state.isError === true) {
-                toast.error(action.error);
+                toast.info("Invalid Credentiels");
             }
         })
         .addCase(loginUser.pending, (state) => {
@@ -74,7 +74,7 @@ export const authSlice = createSlice({
             state.isSuccess = false;
             state.message = action.error;
             if (state.isError === true) {
-                toast.error(action.error);
+                toast.info("Invalid Credentiels");
             }
         })
         .addCase(getUserProductWishlist.pending, (state) => {
