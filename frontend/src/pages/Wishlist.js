@@ -15,7 +15,7 @@ const Wishlist = () => {
     const getWishlistFromDb = () => {
        dispatch(getUserProductWishlist());
     }
-    const wishlistState = useSelector(state => state.auth.wishlist.wishlist);
+    const wishlistState = useSelector(state => state.auth.wishlist);
     const removeFromWishlist = (id) => {
         dispatch(addToWishlist(id));
         setTimeout(() => {

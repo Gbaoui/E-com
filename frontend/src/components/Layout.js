@@ -27,7 +27,7 @@ const Layout = () => {
     draggable
     pauseOnHover
     theme="light"/>
-     <button onClick={showToast}>Show Test Toast</button>
+     {/* <button onClick={showToast}>Show Test Toast</button> */}
     </>
   )
 }
